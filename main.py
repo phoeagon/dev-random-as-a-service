@@ -9,6 +9,8 @@ import jinja2
 import webapp2
 from random_dev import RandomDevice
 from random_dev import IoctlRandom
+from random_dev import CronJobHandler
+from random_dev import ProcFS
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -31,4 +33,6 @@ application = webapp2.WSGIApplication([
     ('/dev/urandom', RandomDevice),
     ('/dev/random', RandomDevice),
     (r'/ioctl/[0-9]+/[A-Z]+/[A-Za-z0-9]+/', IoctlRandom),
+    ('/_cron/flush', CronJobHandler),
+    ('/proc/sys/kernel/random/entropy_avail', ProcFS),
 ], debug=True)

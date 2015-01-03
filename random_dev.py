@@ -12,9 +12,10 @@ from models import Stats
 
 MAX_COUNT = 4096
 DEFAULT_COUNT = 512
-DEFAULT_ENTROPY = 4096*4;
+DEFAULT_ENTROPY = 4096*4
+DEFAULT_ENTROPY_DELTA = 128
 
-class PersistentEntropy(object):
+class _PersistentEntropy(object):
 
     def __init__(self):
         self.KEY='entropy'
@@ -26,43 +27,56 @@ class PersistentEntropy(object):
         else:
             stat = Stats.query(Stats.key==self.KEY).get()
             if stat is not None:
-                memcache.set(key=self.KEY, value=stat.val)
-                return stat.val
+                memcache.set(key=self.KEY, value=int(stat.val))
+                return int(stat.val)
         return DEFAULT_COUNT
 
     def set(self, val):
-        memcache.set(key=self.KEY, value=val)
+        memcache.set(key=self.KEY, value=str(val))
 
     def delta(self, diff):
         val = memcache.get(self.KEY)
         if val is None:
             stat = Stats.query(Stats.key==self.KEY).get()
             if stat:
-                val = stat.val
+                val = int(stat.val)
         if val is None:
             val = DEFAULT_COUNT
-        memcache.set(key=self.KEY, value=val + diff)
+        val += diff
+        # Enforce non-zero
+        if val < 0:
+            val = 0
+        memcache.set(key=self.KEY, value=val)
 
+    def flush(self):
+        stat = Stats.query(Stats.key==self.KEY).get()
+        if not stat:
+            stat = Stats()
+            stat.key=self.KEY
+        stat.val = str(self.get())
+        stat.put()
 
-pentropy = PersistentEntropy()
+pentropy = _PersistentEntropy()
 
-class EntropyCount(object):
+class _EntropyCount(object):
 
     def __init__(self, val=DEFAULT_ENTROPY):
         self.count = val
 
+    def _persistent(self):
+        return pentropy
+
     def get(self):
-        return self.count
+        return self._persistent().get()
 
     def set(self, val):
-        self.count = val
+        self._persistent().set(val)
 
     def delta(self, diff):
-        self.count += diff
-        self.count = max(self.count, 0)
+        self._persistent().delta(diff)
         logging.info(self.count)
 
-entropy = EntropyCount(DEFAULT_ENTROPY)
+entropy = _EntropyCount(DEFAULT_ENTROPY)
 
 class RandomDevice(webapp2.RequestHandler):
 
@@ -156,4 +170,30 @@ class IoctlRandom(webapp2.RequestHandler):
         elif action in ['RNDADDENTROPY', 'RNDZAPENTCNT', 'RNDCLEARPOOL']:
             self._entropy().delta(random.randint(0,50))
             self.abort(200)
-        
+
+class ProcFS(webapp2.RequestHandler):
+
+    def _entropy(self):
+        return entropy
+
+    def get(self):
+        if self.request.path == '/proc/sys/kernel/random/entropy_avail':
+            self.response.headers['Content-Type'] = 'text/plain'
+            self.response.out.write(self._entropy().get())
+            return
+        # Reject other requests
+        self.abort(404)
+
+class CronJobHandler(webapp2.RequestHandler):
+
+    def _entropy(self):
+        return entropy
+
+    def _privileged(self):
+        return (users.is_current_user_admin() or
+        'X-AppEngine-Cron' in self.resquest.headers)
+
+    def get(self):
+        pentropy.delta(DEFAULT_ENTROPY_DELTA)
+        pentropy.flush()
+        self.response.out.write("OK")
