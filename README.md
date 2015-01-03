@@ -89,6 +89,7 @@ so without prior notifications.
 [2] *Authority* includes but not limited to Google, Github, NSA, CIA, KGB,
 CCP, our romantic partners (should they appear in the future). 
 
+<a name="pricing"></a>
 ## Pricing
 
 N/A
@@ -190,7 +191,7 @@ For ease of illustration we use [requests](http://docs.python-requests.org/en/la
             print req.text
 
 <a name="contact"></a>
-### Contact
+## Contact
 
 phoeagon
 
