@@ -124,6 +124,11 @@
 </pre></div>
 
 
+<p>Use non-blocking <code>/dev/urandom</code>, or check for <em>entropy</em> level before using <code>/dev/random</code>.</p>
+<div class="codehilite"><pre>    curl http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail
+</pre></div>
+
+
 <p><a name="home"></a></p>
 <h2>Home</h2>
 <p>Cloud computing era has come and now virtually everything is a service. You
@@ -145,6 +150,8 @@ countries worldwide.</p>
 who have failed at finding their girlfriends in real life. Our first-hand
 experiences in generating non-sense garbage at datings is more than <em>awesome</em>!
 Over the years we have creating <em>tons of</em> random garbage orally and electronically. So we start this business out of our strengths.</p>
+<p><img alt="I'm so random. XKCD" src="http://imgs.xkcd.com/comics/im_so_random.png" title="I'm so random. XKCD" /></p>
+<p><a href="http://www.xkcd.com/1210/">XKCD-1210: I'm so random!</a></p>
 <p><a name="features"></a></p>
 <h2>Features</h2>
 <h3>What is <code>/dev/random</code></h3>
@@ -182,7 +189,10 @@ iOS
 <li>Provide both binary and hex-text I/O.</li>
 <li>Contribute randomness by writing to <code>/dev/random</code> as well! Feel at home
     and build your identity with our community!</li>
+<li>Professional equipment to generate <em>high quality</em> randomness![1]</li>
 </ul>
+<p>[1] <img alt="High Quality Randomness" src="http://imgs.xkcd.com/comics/random_number.png" title="XKCD" /></p>
+<p><a href="http://xkcd.com/221/">Random Number Generator</a></p>
 <h3>Upcoming</h3>
 <ul>
 <li>An Android library for ease of development!</li>
@@ -298,6 +308,19 @@ every some interval.)</p>
 </pre></div>
 
 
+<h3>Implementations &amp; Hosting Your Own</h3>
+<p>We implemented our service using the device of
+<a href="http://en.wikipedia.org/wiki/Schr%C3%B6dinger's_cat">Schrodinger's Cat</a>.</p>
+<p><img alt="Schrodinger's Cat" src="misc/schrodinger.png" /></p>
+<p>To start your own, firstly you need a cat farm.</p>
+<p><img alt="Kitten" src="misc/kitten.jpg" />
+<img alt="Kitten" src="misc/kitten.jpg" />
+<img alt="Kitten" src="misc/kitten.jpg" />
+<img alt="Kitten" src="misc/kitten.jpg" />
+<img alt="Kitten" src="misc/kitten.jpg" />
+<img alt="Kitten" src="misc/kitten.jpg" />
+<img alt="Kitten" src="misc/kitten.jpg" />
+<img alt="Kitten" src="misc/kitten.jpg" /></p>
 <p><a name="contact"></a></p>
 <h2>Contact</h2>
 <p>phoeagon</p>
