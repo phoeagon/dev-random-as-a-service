@@ -1,0 +1,229 @@
+<h1>/dev/random As a Service</h1>
+
+<p>phoeagon</p>
+
+<p><code>/dev/random</code> as a service. </p>
+
+<p><a name="home"></a></p>
+
+<h2>Home</h2>
+
+<p>Cloud computing era has come and now virtually everything is a service. You
+create <a href="https://docs.google.com">documents</a>,
+<a href="https://drive.google.com">upload files</a>, 
+<a href="https://cloud.google.com">deploy websites</a>. You can 
+get <a href="http://youtube.com">movies</a>, <a href="http://github.com">software</a>, etc.
+But <strong>what if you want some random garbage</strong>?</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29">IaaS</a>,
+<a href="https://en.wikipedia.org/wiki/Cloud_computing#Software_as_a_service_.28SaaS.29">SaaS</a>,
+<a href="https://en.wikipedia.org/wiki/Cloud_computing#Platform_as_a_service_.28PaaS.29">PaaS</a>,
+<a href="http://devnull-as-a-service.com">DaaS</a>, we <em>proudly present</em> <strong>DRaaS</strong>.</p>
+
+<p>Start to use our <code>/dev/random</code>-as-a-service` to get random garbage today!
+No need to worry if your random generator on your computer is good enough.
+Switch to our DRaaS, a distributed service available in and optimized for
+countries worldwide.</p>
+
+<h3>Who we are</h3>
+
+<p><code>/dev/random</code>-as-a-service is maintained by a team of software engineers
+who have failed at finding their girlfriends in real life. Our first-hand
+experiences in generating non-sense garbage at datings is more than <em>awesome</em>!
+Over the years we have creating <em>tons of</em> random garbage orally and electronically. So we start this business out of our strengths.</p>
+
+<p><a name="features"></a></p>
+
+<h2>Features</h2>
+
+<h3>What is <code>/dev/random</code></h3>
+
+<p>Quote wikipedia:</p>
+
+<blockquote>
+  <p>In Unix-like operating systems, <code>/dev/random</code> is a special file
+that serves as a blocking pseudorandom number generator.
+It allows access to environmental noise collected from device
+drivers and other sources.</p>
+</blockquote>
+
+<h3>Features</h3>
+
+<ul>
+<li>Cryptographically secure randomness from <code>/dev/random</code>, blocks if
+entropy exhausted.</li>
+<li><p>Unified API access for randomness, on all major platforms.</p>
+
+<pre><code>Android
+Windows
+Linux
+Unix
+MacOS
+iOS
+</code></pre></li>
+<li><p>We support <strong>Big Data</strong>!</p></li>
+<li>67.77% uptime guaranteed! (Overtime pay may apply.)</li>
+<li>Provide both <code>/dev/random</code> and a <code>/dev/urandom</code> that generates
+tons of garbage.</li>
+<li>Provide both blocking and non-blocking mode for both, <em>something you
+don't find on your local computer</em>!</li>
+<li>Provide both binary and hex-text I/O.</li>
+<li>Contribute randomness by writing to <code>/dev/random</code> as well! Feel at home
+and build your identity with our community!</li>
+</ul>
+
+<h3>Upcoming</h3>
+
+<ul>
+<li>An Android library for ease of development!</li>
+<li><strong>Premium only</strong>: Issue <code>ioctl</code> to increase entropy count!</li>
+<li><a href="http://en.wikipedia.org/wiki/Character_Generator_Protocol">Character Generation protocol</a>
+as described in <a href="http://tools.ietf.org/html/rfc864">RFC864</a> to provide you with
+random data.</li>
+</ul>
+
+<h3>Confidentiality, Privacy &amp; Privileges</h3>
+
+<ul>
+<li>If you are an lawyer representing <code>/dev/random</code>-as-a-service, the communication
+between the server and you is protected by
+<a href="http://en.wikipedia.org/wiki/Attorney–client_privilege">Attorney Client Privilege</a> .</li>
+<li>We promise we give you real randomness! (Unconditional refund for 3-sec).</li>
+<li>We promise we don't implement any logs on what you submit to our entropy pool. [1]</li>
+</ul>
+
+<p>[1] Because we never have the resources to do so. This may change to ensure
+compliance with <em>authority</em> regulations[2], and we may be compelled to do
+so without prior notifications.</p>
+
+<p>[2] <em>Authority</em> includes but not limited to Google, Github, NSA, CIA, KGB,
+CCP, our romantic partners (should they appear in the future). </p>
+
+<h2>Pricing</h2>
+
+<p>N/A</p>
+
+<p><a name="api"></a></p>
+
+<h2>API</h2>
+
+<h3>Getting Random Garbage</h3>
+
+<p>An HTTP-based API is provided for access to <code>/dev/random</code> and <code>/dev/urandom</code>.</p>
+
+<p>The API is simple and elegant. Do an HTTP GET to get the random garbage you
+want, and we take care of the rest! Our powerful servers across the globe
+provide you with high-quality random garbage for <em>free</em>!</p>
+
+<pre><code>    $ curl http://dev-random-as-a-service.appspot.com/dev/urandom
+    c977187c45a5d4b5f495364be3fcccfd442b6d1400a872acadbb2067bac0749a4a6
+    &lt;...truncated&gt;
+    240e045420e8eaeedba32d5ee3860265d8a888dfa957faf7fa3451d00c46b3e3cb4
+</code></pre>
+
+<p>We support the following parameters to be sent in the URL.</p>
+
+<pre><code>    non-block: Include this parameter, regardless of its value,
+        ensures that the request doesn't block due to lack of
+        entropy. This is useful for `/dev/random`, which by default
+        blocks if entropy level is not enough for your request.
+    count: The number of random bytes to acquire. The limitation depends
+        on the quota of your subscription plan. For free users, it's
+        limited to 4096.
+    io: either 'binary' or 'text'. Default is 'text', which converts
+        random data to its corresponding hexidecimal representation
+        for human-readability.
+</code></pre>
+
+<p>For example, to get 1234 bytes of random data as binary stream from
+<code>/dev/random</code>, and force server to return a status code of <code>503 Service Unavailable</code>
+when entropy is not enough, use:</p>
+
+<pre><code>    curl "http://dev-random-as-a-service.appspot.com/dev/random?io=binary&amp;count=1234&amp;non-block=a"
+</code></pre>
+
+<h3>Contributing to entropy pool</h3>
+
+<p>Issue a POST request to <code>/dev/random</code>.</p>
+
+<pre><code>    curl -v -d @my_password_list.txt -X POST http://dev-random-as-a-service.appspot.com/dev/random
+</code></pre>
+
+<p>On success, a status code of <code>202 Accepted</code> is returned.</p>
+
+<h3>(Premium only) IOCTL for <code>/dev/random</code></h3>
+
+<p>This API is premium only.</p>
+
+<p>Issue GET/POST request to <code>/ioctl/&lt;fd&gt;/&lt;OPERATION&gt;/&lt;param&gt;/</code>.</p>
+
+<p>According to <code>man 4 random</code>, <code>&lt;OPERATION&gt;</code> may be:</p>
+
+<pre><code>    RNDGETENTCNT
+    RNDADDTOENTCNT
+    RNDADDENTROPY
+    RNDZAPENTCNT
+    ...
+</code></pre>
+
+<p><code>&lt;fd&gt;</code> indicates the file descriptor and may be any integer. <code>&lt;param&gt;</code>
+depends on <code>&lt;OPERATIONS&gt;</code> and you should consult the manual for detailed
+usage.</p>
+
+<p>For example, to check the entropy level, use:</p>
+
+<pre><code>    $ curl http://dev-random-as-a-service.appspot.com/ioctl/4/RNDGETENTCNT/4/
+    8192
+    &lt;Your result may differ&gt;
+</code></pre>
+
+<p>To increase the entropy level by 30, use:</p>
+
+<pre><code>    $ curl http://dev-random-as-a-service.appspot.com/ioctl/4/RNDADDTOENTCNT/20/
+</code></pre>
+
+<p>(We have a fancy nuclear based randomness generator that refills the entropy pool
+every some interval.)</p>
+
+<h3><code>/proc/sys/kernel/random/entropy_avail</code> API</h3>
+
+<p>This is an HTTP-GET API to get the entropy level.</p>
+
+<pre><code>    $ curl http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail
+    8192
+    &lt;Your result may differ&gt;
+</code></pre>
+
+<p>This differs from the IOCTL version for it's not restricted to <em>permium</em> users.</p>
+
+<h3>Use python as a client!</h3>
+
+<p>For ease of illustration we use <a href="http://docs.python-requests.org/en/latest/">requests</a>.</p>
+
+<pre><code>    import requests
+    req = requests.get('http://dev-random-as-a-service.appospot.com/dev/urandom')
+    if req.status_code != 200:
+        print "ERR"
+    else:
+        print req.text
+</code></pre>
+
+<p><a name="contact"></a></p>
+
+<h3>Contact</h3>
+
+<p>phoeagon</p>
+
+<ul>
+<li><a href="http://github.com/phoeagon/">Github</a></li>
+<li><a href="http://about.me/phoeagon/">About.me</a></li>
+<li><a href="http://phoeagon.appspot.com/">Blog</a></li>
+<li><a href="http://twitter.com/phoeagon/">Twitter</a></li>
+</ul>
+
+<p>Other projects:</p>
+
+<ul>
+<li><a href="http://gfwrouter.info/">GFW-Router</a></li>
+<li><a href="https://github.com/phoeagon/GReaderDump">Google Reader Dump</a></li>
+</ul>
