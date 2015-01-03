@@ -4,6 +4,13 @@ phoeagon
 
 `/dev/random` as a service. 
 
+<a name="getstart"></a>
+## Getting Started
+
+Go [here](http://dev-random-as-a-service.appspot.com/dev/urandom) or go CLI-ish:
+
+        curl http://dev-random-as-a-service.appspot.com/dev/urandom&count=34?io=binary
+
 <a name="home"></a>
 ## Home
 
@@ -89,6 +96,7 @@ so without prior notifications.
 [2] *Authority* includes but not limited to Google, Github, NSA, CIA, KGB,
 CCP, our romantic partners (should they appear in the future). 
 
+<a name="pricing"></a>
 ## Pricing
 
 N/A
@@ -190,7 +198,7 @@ For ease of illustration we use [requests](http://docs.python-requests.org/en/la
             print req.text
 
 <a name="contact"></a>
-### Contact
+## Contact
 
 phoeagon
 
