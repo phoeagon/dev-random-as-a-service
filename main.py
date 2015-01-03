@@ -21,11 +21,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
-        template_values = {
-        }
-
-        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
-        self.response.write(template.render(template_values))
+        self.redirect('http://phoeagon.github.io/dev-random-as-a-service/')
 
 
 application = webapp2.WSGIApplication([
