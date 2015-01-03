@@ -4,6 +4,7 @@ phoeagon
 
 `/dev/random` as a service. 
 
+<a name="home"></a>
 ## Home
 
 Cloud computing era has come and now virtually everything is a service. You
@@ -30,6 +31,7 @@ who have failed at finding their girlfriends in real life. Our first-hand
 experiences in generating non-sense garbage at datings is more than *awesome*!
 Over the years we have creating *tons of* random garbage orally and electronically. So we start this business out of our strengths.
 
+<a name="features"></a>
 ## Features
 
 ### What is `/dev/random`
@@ -91,6 +93,7 @@ CCP, our romantic partners (should they appear in the future).
 
 N/A
 
+<a name="api"></a>
 ## API
 
 ### Getting Random Garbage
@@ -186,6 +189,7 @@ For ease of illustration we use [requests](http://docs.python-requests.org/en/la
         else:
             print req.text
 
+<a name="contact"></a>
 ### Contact
 
 phoeagon
