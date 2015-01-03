@@ -123,13 +123,13 @@ For example, to get 1234 bytes of random data as binary stream from
 `/dev/random`, and force server to return a status code of `503 Service Unavailable`
 when entropy is not enough, use:
 
-        curl http://dev-random-as-a-service/dev/random?io=binary&count=1234&non-block=a
+        curl "http://dev-random-as-a-service.appspot.com/dev/random?io=binary&count=1234&non-block=a"
 
 ### Contributing to entropy pool
 
 Issue a POST request to `/dev/random`.
 
-        curl -v -d @my_password_list.txt -X POST http://dev-random-as-a-service/dev/random
+        curl -v -d @my_password_list.txt -X POST http://dev-random-as-a-service.appspot.com/dev/random
 
 On success, a status code of `202 Accepted` is returned.
 
