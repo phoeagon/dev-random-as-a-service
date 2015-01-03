@@ -5,20 +5,24 @@ $(document).ready(function() {
         if (idx > 0) {
             var c = $(refs[idx-1]).prev().children();
             $(refs[idx]).append(
-                $('<a>').addClass('scroll').attr('href', '#'+$(c[0]).attr('name')).text('[Prev]')
+                $('<a>').addClass('scroll btn btn-xs btn-success')
+                .attr('href', '#'+$(c[0]).attr('name')).text('Prev')
             );
         }
         if (idx != refs.length - 1) {
             var c = $(refs[idx+1]).prev().children();
             $(refs[idx]).append(
-                $('<a>').addClass('scroll').attr('href', '#'+$(c[0]).attr('name')).text('[Next]')
+                $('<a>').addClass('scroll btn btn-xs btn-warning')
+                .attr('href', '#'+$(c[0]).attr('name')).text('Next')
             );
         }
         $(refs[idx]).append(
-                $('<a>').addClass('scroll').attr('href', '#top').text('[Top]')
+                $('<a>').addClass('scroll btn btn-xs btn-info')
+                .attr('href', '#top').text('Top')
         );
         $(refs[idx]).append(
-                $('<a>').addClass('scroll').attr('href', '#footer').text('[Down]')
+                $('<a>').addClass('scroll btn btn-xs btn-info')
+                .attr('href', '#footer').text('Down')
         );
     }
     
