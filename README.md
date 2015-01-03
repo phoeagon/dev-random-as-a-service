@@ -11,6 +11,10 @@ Go [here](http://dev-random-as-a-service.appspot.com/dev/urandom) or go CLI-ish:
 
         curl http://dev-random-as-a-service.appspot.com/dev/urandom&count=34?io=binary
 
+Use non-blocking `/dev/urandom`, or check for *entropy* level before using `/dev/random`.
+
+        curl http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail
+
 <a name="home"></a>
 ## Home
 
@@ -37,6 +41,10 @@ countries worldwide.
 who have failed at finding their girlfriends in real life. Our first-hand
 experiences in generating non-sense garbage at datings is more than *awesome*!
 Over the years we have creating *tons of* random garbage orally and electronically. So we start this business out of our strengths.
+
+![I'm so random. XKCD](http://imgs.xkcd.com/comics/im_so_random.png "I'm so random. XKCD")
+
+[XKCD-1210: I'm so random!](http://www.xkcd.com/1210/)
 
 <a name="features"></a>
 ## Features
@@ -72,6 +80,11 @@ Quote wikipedia:
 + Provide both binary and hex-text I/O.
 + Contribute randomness by writing to `/dev/random` as well! Feel at home
     and build your identity with our community!
++ Professional equipment to generate *high quality* randomness![1]
+
+[1] ![High Quality Randomness](http://imgs.xkcd.com/comics/random_number.png "XKCD")
+
+[Random Number Generator](http://xkcd.com/221/)
 
 ### Upcoming
 
@@ -196,6 +209,26 @@ For ease of illustration we use [requests](http://docs.python-requests.org/en/la
             print "ERR"
         else:
             print req.text
+
+### Implementations & Hosting Your Own
+
+We implemented our service using the device of
+[Schrodinger's Cat](http://en.wikipedia.org/wiki/Schr%C3%B6dinger's_cat).
+
+![Schrodinger's Cat](misc/schrodinger.png)
+
+To start your own, firstly you need a cat farm.
+
+![Kitten](misc/kitten.jpg)
+![Kitten](misc/kitten.jpg)
+![Kitten](misc/kitten.jpg)
+![Kitten](misc/kitten.jpg)
+![Kitten](misc/kitten.jpg)
+![Kitten](misc/kitten.jpg)
+![Kitten](misc/kitten.jpg)
+![Kitten](misc/kitten.jpg)
+
+
 
 <a name="contact"></a>
 ## Contact
