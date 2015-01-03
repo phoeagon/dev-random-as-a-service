@@ -98,8 +98,12 @@ class RandomDevice(webapp2.RequestHandler):
         self.abort(202)
 
     def _parse_arguments(self):
+        try:
+            count = int(self.request.get('count', DEFAULT_COUNT))
+        except ValueError:
+            self.abort(400)
         return type('Params',(),{
-            'count': min(self.request.get('count', DEFAULT_COUNT), MAX_COUNT),
+            'count': min(count, MAX_COUNT),
             'io': self.request.get('io', 'text'),
             'non_block': 'non_block' in self.request.GET,
         })
