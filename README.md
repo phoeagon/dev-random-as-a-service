@@ -9,11 +9,11 @@ phoeagon
 
 Go [here](http://dev-random-as-a-service.appspot.com/dev/urandom) or go CLI-ish:
 
-        curl http://dev-random-as-a-service.appspot.com/dev/urandom&count=34?io=binary
+        curl "http://dev-random-as-a-service.appspot.com/dev/urandom?count=34&io=binary"
 
 Use non-blocking `/dev/urandom`, or check for *entropy* level before using `/dev/random`.
 
-        curl http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail
+        curl "http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"
 
 <a name="home"></a>
 ## Home
@@ -125,7 +125,7 @@ The API is simple and elegant. Do an HTTP GET to get the random garbage you
 want, and we take care of the rest! Our powerful servers across the globe
 provide you with high-quality random garbage for *free*!
 
-        $ curl http://dev-random-as-a-service.appspot.com/dev/urandom
+        $ curl "http://dev-random-as-a-service.appspot.com/dev/urandom"
         c977187c45a5d4b5f495364be3fcccfd442b6d1400a872acadbb2067bac0749a4a6
         <...truncated>
         240e045420e8eaeedba32d5ee3860265d8a888dfa957faf7fa3451d00c46b3e3cb4

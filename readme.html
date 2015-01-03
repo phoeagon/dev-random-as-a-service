@@ -120,12 +120,12 @@
 <p><a name="getstart"></a></p>
 <h2>Getting Started</h2>
 <p>Go <a href="http://dev-random-as-a-service.appspot.com/dev/urandom">here</a> or go CLI-ish:</p>
-<div class="codehilite"><pre>    curl http://dev-random-as-a-service.appspot.com/dev/urandom&amp;count=34?io=binary
+<div class="codehilite"><pre>    curl &quot;http://dev-random-as-a-service.appspot.com/dev/urandom?count=34&amp;io=binary&quot;
 </pre></div>
 
 
 <p>Use non-blocking <code>/dev/urandom</code>, or check for <em>entropy</em> level before using <code>/dev/random</code>.</p>
-<div class="codehilite"><pre>    curl http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail
+<div class="codehilite"><pre>    curl &quot;http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail&quot;
 </pre></div>
 
 
@@ -224,7 +224,7 @@ CCP, our romantic partners (should they appear in the future). </p>
 <p>The API is simple and elegant. Do an HTTP GET to get the random garbage you
 want, and we take care of the rest! Our powerful servers across the globe
 provide you with high-quality random garbage for <em>free</em>!</p>
-<div class="codehilite"><pre>    $ curl http://dev-random-as-a-service.appspot.com/dev/urandom
+<div class="codehilite"><pre>    $ curl &quot;http://dev-random-as-a-service.appspot.com/dev/urandom&quot;
     c977187c45a5d4b5f495364be3fcccfd442b6d1400a872acadbb2067bac0749a4a6
     &lt;...truncated&gt;
     240e045420e8eaeedba32d5ee3860265d8a888dfa957faf7fa3451d00c46b3e3cb4
