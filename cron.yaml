@@ -1,4 +1,4 @@
 cron:
 - description: Flush entropy count.
   url: /_cron/flush
-  schedule: every 30 min
+  schedule: every 30 minutes

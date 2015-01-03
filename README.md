@@ -43,6 +43,8 @@ Quote wikipedia:
 
 ### Features
 
++ Cryptographically secure randomness from `/dev/random`, blocks if
+    entropy exhausted.
 + Unified API access for randomness, on all major platforms.
 
         Android
@@ -53,7 +55,7 @@ Quote wikipedia:
         iOS
 
 + We support **Big Data**!
-+ 67.77% uptime guaranteed! (Overtime compensations may apply.)
++ 67.77% uptime guaranteed! (Overtime pay may apply.)
 + Provide both `/dev/random` and a `/dev/urandom` that generates
     tons of garbage.
 + Provide both blocking and non-blocking mode for both, *something you
