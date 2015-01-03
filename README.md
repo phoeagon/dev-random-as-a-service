@@ -2,6 +2,8 @@
 ==============================
 phoeagon
 
+`/dev/random` as a service. 
+
 ## Home
 
 Cloud computing era has come and now virtually everything is a service. You
