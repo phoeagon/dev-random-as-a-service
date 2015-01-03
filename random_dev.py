@@ -101,7 +101,7 @@ class RandomDevice(webapp2.RequestHandler):
         return type('Params',(),{
             'count': min(self.request.get('count', DEFAULT_COUNT), MAX_COUNT),
             'io': self.request.get('io', 'text'),
-            'non_block': self.request.get('non_block', False),
+            'non_block': 'non_block' in self.request.GET,
         })
 
     def urandom(self):
