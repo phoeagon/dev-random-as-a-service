@@ -75,7 +75,7 @@ class _EntropyCount(object):
 
     def delta(self, diff):
         self._persistent().delta(diff)
-        logging.info(self.count)
+        # logging.info(self.count)
 
 entropy = _EntropyCount(DEFAULT_ENTROPY)
 
