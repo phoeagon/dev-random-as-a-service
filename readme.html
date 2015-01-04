@@ -125,7 +125,9 @@
 </pre></div>
 
 
-<p>Use non-blocking <code>/dev/urandom</code>, or check for <em>entropy</em> level before using <code>/dev/random</code>.</p>
+<p>Use non-blocking <code>/dev/urandom</code>, or check for
+<a href="http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"><em>entropy</em> level</a>
+ before using <code>/dev/random</code>.</p>
 <div class="codehilite"><pre>    curl &quot;http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail&quot;
 </pre></div>
 
