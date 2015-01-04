@@ -218,7 +218,35 @@ so without prior notifications.</p>
 CCP, our romantic partners (should they appear in the future). </p>
 <p><a name="pricing"></a></p>
 <h2>Pricing</h2>
-<p>N/A</p>
+<div class="codehilite"><pre>  Plan          Basic   Premium   BusinessPremium
+  ----------------------------------------------
+  MaxCount      4096    65536     [Customize]
+
+  Read           Yes     Yes        Yes
+
+  Write          Yes     Yes        Yes
+
+  Refund         3-sec   4-sec     10-sec
+
+  IOCTL           No      Yes        Yes
+
+  Check
+  Entropy         Yes     Yes        Yes
+  Level
+
+  Routine free
+  Entropy Pool     Yes    Yes        Yes
+  Refill
+
+  Dedicated       No      Avail 4   Included
+  Entropy                Purchase
+
+  Price           Free    $20/Month*   $100/Month*
+
+    * A limited offer is available currently, at 50% discount.
+</pre></div>
+
+
 <p><a name="api"></a></p>
 <h2>API</h2>
 <h3>Getting Random Garbage</h3>

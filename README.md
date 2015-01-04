@@ -115,7 +115,32 @@ CCP, our romantic partners (should they appear in the future).
 <a name="pricing"></a>
 ## Pricing
 
-N/A
+      Plan          Basic   Premium   BusinessPremium
+      ----------------------------------------------
+      MaxCount      4096    65536     [Customize]
+
+      Read           Yes     Yes        Yes
+
+      Write          Yes     Yes        Yes
+
+      Refund         3-sec   4-sec     10-sec
+
+      IOCTL           No      Yes        Yes
+
+      Check
+      Entropy         Yes     Yes        Yes
+      Level
+
+      Routine free
+      Entropy Pool     Yes    Yes        Yes
+      Refill
+
+      Dedicated       No      Avail 4   Included
+      Entropy                Purchase
+
+      Price           Free    $20/Month*   $100/Month*
+
+        * A limited offer is available currently, at 50% discount.
 
 <a name="api"></a>
 ## API
