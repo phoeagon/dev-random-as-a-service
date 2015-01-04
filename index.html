@@ -132,6 +132,7 @@
 </pre></div>
 
 
+<p><strong>New</strong>: For our experimental <code>/dev/null</code> and <code>/dev/zero</code>, see the <a href="#api">API</a> section.</p>
 <p><a id="accordion_pre"><!-- ABC --></a></p>
 <p><a name="home"></a></p>
 <h2>Home</h2>
@@ -337,6 +338,18 @@ every some interval.)</p>
         print &quot;ERR&quot;
     else:
         print req.text
+</pre></div>
+
+
+<h3>(Experimental) <code>/dev/zero</code> &amp; <code>/dev/null</code></h3>
+<p>This API is <em>experimental</em> and in early stage.</p>
+<p><code>/dev/zero</code> &amp; <a href="http://devnull-as-a-service.com"><code>/dev/null</code></a> API is the same
+as that of <code>/dev/random</code> and <code>/dev/urandom</code>, both GET and POST supported.</p>
+<div class="codehilite"><pre>  curl &quot;http://dev-random-as-a-service.appspot.com/dev/null&quot;
+  &lt;You get a response of 0-length in content.&gt;
+  curl &quot;http://dev-random-as-a-service.appspot.com/dev/zero?count=10&amp;io=binary&quot; | md5sum
+  a63c90cc3684ad8b0a2176a6a8fe9005  -
+  &lt;MD5 of 10-bytes, all of which are 0x0&gt;
 </pre></div>
 
 
