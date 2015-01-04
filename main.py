@@ -37,6 +37,8 @@ application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/login', Login),
     ('/logout', Logout),
+    ('/dev/null', RandomDevice),
+    ('/dev/zero', RandomDevice),
     ('/dev/urandom', RandomDevice),
     ('/dev/random', RandomDevice),
     (r'/ioctl/[0-9]+/[A-Z]+/[A-Za-z0-9]+/', IoctlRandom),

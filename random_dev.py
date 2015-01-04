@@ -93,6 +93,11 @@ class RandomDevice(webapp2.RequestHandler):
             self.urandom()
         elif self.request.path == '/dev/random':
             self.random()
+        elif self.request.path == '/dev/null':
+            # reading from /dev/null always returns EOF
+            return
+        elif self.request.path == '/dev/zero':
+            self.zero()
 
     def post(self):
         # 202 Accepted
@@ -108,6 +113,10 @@ class RandomDevice(webapp2.RequestHandler):
             'io': self.request.get('io', 'text'),
             'non_block': 'non_block' in self.request.GET,
         })
+
+    def zero(self):
+        params = self._parse_arguments()
+        self._serve(params, lambda x: '\0'*x)
 
     def urandom(self):
         params = self._parse_arguments()
@@ -128,8 +137,8 @@ class RandomDevice(webapp2.RequestHandler):
         # /dev/random decreases entropy
         self._entropy_device().delta(-params.count)
 
-    def _serve(self, params):
-        data = os.urandom(params.count)
+    def _serve(self, params, data_source=os.urandom):
+        data = data_source(params.count)
         if params.io == 'binary':
             self.response.headers['Content-Type'] = 'application/octet-stream; charset=binary'
             self.response.write(data)
