@@ -153,6 +153,9 @@ class IoctlRandom(webapp2.RequestHandler):
         self._serve()
 
     def _serve(self):
+        # Check privilege
+        if not self._privileged():
+            self.abort(403)
         #  ['', 'ioctl', '12', 'ABC', '12', '']
         vals = self.request.path.split('/')
         action = vals[3]
