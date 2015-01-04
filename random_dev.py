@@ -193,7 +193,7 @@ class CronJobHandler(webapp2.RequestHandler):
 
     def _privileged(self):
         return (users.is_current_user_admin() or
-        'X-AppEngine-Cron' in self.resquest.headers)
+        'X-AppEngine-Cron' in self.request.headers)
 
     def get(self):
         if not self._privileged():
