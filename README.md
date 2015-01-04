@@ -11,7 +11,9 @@ Go [here](http://dev-random-as-a-service.appspot.com/dev/urandom) or go CLI-ish:
 
         curl "http://dev-random-as-a-service.appspot.com/dev/urandom?count=34&io=binary"
 
-Use non-blocking `/dev/urandom`, or check for *entropy* level before using `/dev/random`.
+Use non-blocking `/dev/urandom`, or check for
+[*entropy* level](http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail)
+ before using `/dev/random`.
 
         curl "http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"
 
