@@ -9,13 +9,16 @@ phoeagon
 
 Go [here](http://dev-random-as-a-service.appspot.com/dev/urandom) or go CLI-ish:
 
-        curl http://dev-random-as-a-service.appspot.com/dev/urandom&count=34?io=binary
+        curl "http://dev-random-as-a-service.appspot.com/dev/urandom?count=34&io=binary"
 
 Use non-blocking `/dev/urandom`, or check for *entropy* level before using `/dev/random`.
 
-        curl http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail
+        curl "http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"
+
+<a id="accordion_pre"><!-- ABC --></a>
 
 <a name="home"></a>
+
 ## Home
 
 Cloud computing era has come and now virtually everything is a service. You
@@ -112,7 +115,32 @@ CCP, our romantic partners (should they appear in the future).
 <a name="pricing"></a>
 ## Pricing
 
-N/A
+      Plan          Basic   Premium   BusinessPremium
+      ----------------------------------------------
+      MaxCount      4096    65536     [Customize]
+
+      Read           Yes     Yes        Yes
+
+      Write          Yes     Yes        Yes
+
+      Refund         3-sec   4-sec     10-sec
+
+      IOCTL           No      Yes        Yes
+
+      Check
+      Entropy         Yes     Yes        Yes
+      Level
+
+      Routine free
+      Entropy Pool     Yes    Yes        Yes
+      Refill
+
+      Dedicated       No      Avail 4   Included
+      Entropy                Purchase
+
+      Price           Free    $20/Month*   $100/Month*
+
+        * A limited offer is available currently, at 50% discount.
 
 <a name="api"></a>
 ## API
@@ -125,7 +153,7 @@ The API is simple and elegant. Do an HTTP GET to get the random garbage you
 want, and we take care of the rest! Our powerful servers across the globe
 provide you with high-quality random garbage for *free*!
 
-        $ curl http://dev-random-as-a-service.appspot.com/dev/urandom
+        $ curl "http://dev-random-as-a-service.appspot.com/dev/urandom"
         c977187c45a5d4b5f495364be3fcccfd442b6d1400a872acadbb2067bac0749a4a6
         <...truncated>
         240e045420e8eaeedba32d5ee3860265d8a888dfa957faf7fa3451d00c46b3e3cb4
@@ -245,3 +273,5 @@ Other projects:
 + [GFW-Router](http://gfwrouter.info/)
 + [Google Reader Dump](https://github.com/phoeagon/GReaderDump)
 
+<a name="_epilog"></a>
+<div id="accordion_post"></div>
