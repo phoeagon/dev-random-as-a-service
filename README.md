@@ -17,6 +17,8 @@ Use non-blocking `/dev/urandom`, or check for
 
         curl "http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"
 
+**New**: For our experimental `/dev/null` and `/dev/zero`, see the [API](#api) section.
+
 <a id="accordion_pre"><!-- ABC --></a>
 
 <a name="home"></a>
@@ -239,6 +241,20 @@ For ease of illustration we use [requests](http://docs.python-requests.org/en/la
             print "ERR"
         else:
             print req.text
+
+### (Experimental) `/dev/zero` & `/dev/null`
+
+This API is *experimental* and in early stage.
+
+`/dev/zero` & [`/dev/null`](http://devnull-as-a-service.com) API is the same
+as that of `/dev/random` and `/dev/urandom`, both GET and POST supported.
+
+      curl "http://dev-random-as-a-service.appspot.com/dev/null"
+      <You get a response of 0-length in content.>
+      curl "http://dev-random-as-a-service.appspot.com/dev/zero?count=10&io=binary" | md5sum
+      a63c90cc3684ad8b0a2176a6a8fe9005  -
+      <MD5 of 10-bytes, all of which are 0x0>
+
 
 ### Implementations & Hosting Your Own
 
