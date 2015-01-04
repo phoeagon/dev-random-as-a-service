@@ -23,9 +23,20 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         self.redirect('http://phoeagon.github.io/dev-random-as-a-service/')
 
+class Login(webapp2.RequestHandler):
+
+    def get(self):
+        self.redirect(users.create_login_url('/'))
+
+class Logout(webapp2.RequestHandler):
+
+    def get(self):
+        self.redirect(users.create_logout_url('/'))
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/login', Login),
+    ('/logout', Logout),
     ('/dev/urandom', RandomDevice),
     ('/dev/random', RandomDevice),
     (r'/ioctl/[0-9]+/[A-Z]+/[A-Za-z0-9]+/', IoctlRandom),

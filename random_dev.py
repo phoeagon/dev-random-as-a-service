@@ -12,8 +12,8 @@ from models import Stats
 
 MAX_COUNT = 4096
 DEFAULT_COUNT = 512
-DEFAULT_ENTROPY = 4096*4
-DEFAULT_ENTROPY_DELTA = 128
+DEFAULT_ENTROPY = 4096*16
+DEFAULT_ENTROPY_DELTA = 512
 
 class _PersistentEntropy(object):
 
@@ -87,7 +87,7 @@ class RandomDevice(webapp2.RequestHandler):
         return self._entropy_device().get()
 
     def get(self):
-        logging.info(self.request.path)
+        #logging.info(self.request.path)
         if self.request.path == '/dev/urandom':
             self.urandom()
         elif self.request.path == '/dev/random':
@@ -130,7 +130,6 @@ class RandomDevice(webapp2.RequestHandler):
         data = os.urandom(params.count)
         if params.io == 'binary':
             self.response.headers['Content-Type'] = 'application/octet-stream; charset=binary'
-            logging.info(self.response.content_type_params)
             self.response.write(data)
         else:
             self.response.headers['Content-Type'] = 'text/plain'
@@ -154,7 +153,6 @@ class IoctlRandom(webapp2.RequestHandler):
     def _serve(self):
         #  ['', 'ioctl', '12', 'ABC', '12', '']
         vals = self.request.path.split('/')
-        logging.info(vals)
         action = vals[3]
         if action == 'RNDGETENTCNT':
             self.response.headers['Content-Type'] = 'text/plain'
@@ -198,6 +196,8 @@ class CronJobHandler(webapp2.RequestHandler):
         'X-AppEngine-Cron' in self.resquest.headers)
 
     def get(self):
+        if not self._privileged():
+            return
         pentropy.delta(DEFAULT_ENTROPY_DELTA)
         pentropy.flush()
         self.response.out.write("OK")
