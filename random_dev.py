@@ -5,6 +5,7 @@ import ssl
 import webapp2
 import random
 import binascii
+import time
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from google.appengine.api import memcache
@@ -121,6 +122,7 @@ class RandomDevice(webapp2.RequestHandler):
                 self.abort(503)
             else:
                 # Timeout to simulate block
+                time.sleep(100)
                 return
         self._serve(params)
         # /dev/random decreases entropy
