@@ -15,7 +15,10 @@ Use non-blocking `/dev/urandom`, or check for *entropy* level before using `/dev
 
         curl "http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"
 
+<a id="accordion_pre"><!-- ABC --></a>
+
 <a name="home"></a>
+
 ## Home
 
 Cloud computing era has come and now virtually everything is a service. You
@@ -245,3 +248,5 @@ Other projects:
 + [GFW-Router](http://gfwrouter.info/)
 + [Google Reader Dump](https://github.com/phoeagon/GReaderDump)
 
+<a name="_epilog"></a>
+<div id="accordion_post"></div>
