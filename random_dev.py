@@ -14,7 +14,7 @@ from models import Stats
 MAX_COUNT = 4096
 DEFAULT_COUNT = 512
 DEFAULT_ENTROPY = 4096*16
-DEFAULT_ENTROPY_DELTA = 512
+DEFAULT_ENTROPY_DELTA = 512*8
 
 class _PersistentEntropy(object):
 
