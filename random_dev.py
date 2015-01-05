@@ -96,10 +96,14 @@ class RandomDevice(webapp2.RequestHandler):
         elif self.request.path == '/dev/null':
             # reading from /dev/null always returns EOF
             return
-        elif self.request.path == '/dev/zero':
+        elif (self.request.path == '/dev/zero' or
+            self.request.path =='/dev/full'):
             self.zero()
 
     def post(self):
+        if self.request.path == '/dev/full':
+            # Entity too large
+            self.abort(413)
         # 202 Accepted
         self.abort(202)
 
@@ -141,6 +145,9 @@ class RandomDevice(webapp2.RequestHandler):
         data = data_source(params.count)
         if params.io == 'binary':
             self.response.headers['Content-Type'] = 'application/octet-stream; charset=binary'
+            self.response.write(data)
+        elif params.io == 'ascii':
+            self.response.headers['Content-Type'] = 'text/html; charset=US-ASCII'
             self.response.write(data)
         else:
             self.response.headers['Content-Type'] = 'text/plain'
