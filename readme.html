@@ -132,7 +132,8 @@
 </pre></div>
 
 
-<p><strong>New</strong>: For our experimental <code>/dev/null</code> and <code>/dev/zero</code>, see the <a href="#api">API</a> section.</p>
+<p><strong>New</strong>: For our experimental <code>/dev/full</code>, <code>/dev/null</code> and <code>/dev/zero</code>,
+see the <a href="#api">API</a> section.</p>
 <p><a id="accordion_pre"><!-- ABC --></a></p>
 <p><a name="home"></a></p>
 <h2>Home</h2>
@@ -315,7 +316,7 @@ usage.</p>
 
 
 <p>To increase the entropy level by 30, use:</p>
-<div class="codehilite"><pre>    $ curl http://dev-random-as-a-service.appspot.com/ioctl/4/RNDADDTOENTCNT/20/
+<div class="codehilite"><pre>    $ curl http://dev-random-as-a-service.appspot.com/ioctl/4/RNDADDTOENTCNT/30/
 </pre></div>
 
 
@@ -341,9 +342,10 @@ every some interval.)</p>
 </pre></div>
 
 
-<h3>(Experimental) <code>/dev/zero</code> &amp; <code>/dev/null</code></h3>
+<h3>(Experimental) <code>/dev/full</code>, <code>/dev/zero</code> &amp; <code>/dev/null</code></h3>
 <p>This API is <em>experimental</em> and in early stage.</p>
-<p><code>/dev/zero</code> &amp; <a href="http://devnull-as-a-service.com"><code>/dev/null</code></a> API is the same
+<p><code>/dev/full</code>, <code>/dev/zero</code> &amp; <a href="http://devnull-as-a-service.com"><code>/dev/null</code></a>
+API is the same
 as that of <code>/dev/random</code> and <code>/dev/urandom</code>, both GET and POST supported.</p>
 <div class="codehilite"><pre>  curl &quot;http://dev-random-as-a-service.appspot.com/dev/null&quot;
   &lt;You get a response of 0-length in content.&gt;
@@ -353,6 +355,8 @@ as that of <code>/dev/random</code> and <code>/dev/urandom</code>, both GET and 
 </pre></div>
 
 
+<p>Posting to <code>/dev/full</code> always yields <code>413 Entity too large</code> and reading is
+equivalent to from <code>/dev/zero</code>.</p>
 <h3>Implementations &amp; Hosting Your Own</h3>
 <p>We implemented our service using the device of
 <a href="http://en.wikipedia.org/wiki/Schr%C3%B6dinger's_cat">Schrodinger's Cat</a>.</p>
