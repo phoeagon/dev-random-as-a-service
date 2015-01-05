@@ -125,6 +125,11 @@
 </pre></div>
 
 
+<p>Enjoy an <em>aesthetical feast</em> by seeing those bytes in garbage codes!</p>
+<div class="codehilite"><pre>    curl &quot;http://dev-random-as-a-service.appspot.com/dev/urandom?io=ascii&quot;
+</pre></div>
+
+
 <p>Use non-blocking <code>/dev/urandom</code>, or check for
 <a href="http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"><em>entropy</em> level</a>
  before using <code>/dev/random</code>.</p>
@@ -201,7 +206,7 @@ iOS
 <p><a href="http://xkcd.com/221/">Random Number Generator</a></p>
 <h3>Upcoming</h3>
 <ul>
-<li>An Android library for ease of development!</li>
+<li>An Android library for ease of development! (Considering Cloud Endpoints).</li>
 <li><strong>Premium only</strong>: Issue <code>ioctl</code> to increase entropy count!</li>
 <li><a href="http://en.wikipedia.org/wiki/Character_Generator_Protocol">Character Generation protocol</a>
 as described in <a href="http://tools.ietf.org/html/rfc864">RFC864</a> to provide you with
@@ -273,9 +278,11 @@ provide you with high-quality random garbage for <em>free</em>!</p>
     count: The number of random bytes to acquire. The limitation depends
         on the quota of your subscription plan. For free users, it&#39;s
         limited to 4096.
-    io: either &#39;binary&#39; or &#39;text&#39;. Default is &#39;text&#39;, which converts
+    io: either &#39;binary&#39;, &#39;ascii&#39; or &#39;text&#39;. Default is &#39;text&#39;, which converts
         random data to its corresponding hexidecimal representation
-        for human-readability.
+        for human-readability. &#39;binary&#39; serves raw binary streams and
+        &#39;ascii&#39; the same raw-binary stream but pretending to be HTML
+        by manipulating its `Content-Type` header.
 </pre></div>
 
 

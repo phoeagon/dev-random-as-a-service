@@ -11,6 +11,10 @@ Go [here](http://dev-random-as-a-service.appspot.com/dev/urandom) or go CLI-ish:
 
         curl "http://dev-random-as-a-service.appspot.com/dev/urandom?count=34&io=binary"
 
+Enjoy an *aesthetical feast* by seeing those bytes in garbage codes!
+
+        curl "http://dev-random-as-a-service.appspot.com/dev/urandom?io=ascii"
+
 Use non-blocking `/dev/urandom`, or check for
 [*entropy* level](http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail)
  before using `/dev/random`.
@@ -96,7 +100,7 @@ Quote wikipedia:
 
 ### Upcoming
 
-+ An Android library for ease of development!
++ An Android library for ease of development! (Considering Cloud Endpoints).
 + **Premium only**: Issue `ioctl` to increase entropy count!
 + [Character Generation protocol](http://en.wikipedia.org/wiki/Character_Generator_Protocol)
 as described in [RFC864](http://tools.ietf.org/html/rfc864) to provide you with
@@ -172,9 +176,11 @@ We support the following parameters to be sent in the URL.
         count: The number of random bytes to acquire. The limitation depends
             on the quota of your subscription plan. For free users, it's
             limited to 4096.
-        io: either 'binary' or 'text'. Default is 'text', which converts
+        io: either 'binary', 'ascii' or 'text'. Default is 'text', which converts
             random data to its corresponding hexidecimal representation
-            for human-readability.
+            for human-readability. 'binary' serves raw binary streams and
+            'ascii' the same raw-binary stream but pretending to be HTML
+            by manipulating its `Content-Type` header.
 
 For example, to get 1234 bytes of random data as binary stream from
 `/dev/random`, and force server to return a status code of `503 Service Unavailable`
