@@ -11,13 +11,18 @@ Go [here](http://dev-random-as-a-service.appspot.com/dev/urandom) or go CLI-ish:
 
         curl "http://dev-random-as-a-service.appspot.com/dev/urandom?count=34&io=binary"
 
+Enjoy an *aesthetical feast* by seeing those bytes in garbage codes!
+
+        curl "http://dev-random-as-a-service.appspot.com/dev/urandom?io=ascii"
+
 Use non-blocking `/dev/urandom`, or check for
 [*entropy* level](http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail)
  before using `/dev/random`.
 
         curl "http://dev-random-as-a-service.appspot.com/proc/sys/kernel/random/entropy_avail"
 
-**New**: For our experimental `/dev/null` and `/dev/zero`, see the [API](#api) section.
+**New**: For our experimental `/dev/full`, `/dev/null` and `/dev/zero`,
+see the [API](#api) section.
 
 <a id="accordion_pre"><!-- ABC --></a>
 
@@ -95,7 +100,7 @@ Quote wikipedia:
 
 ### Upcoming
 
-+ An Android library for ease of development!
++ An Android library for ease of development! (Considering Cloud Endpoints).
 + **Premium only**: Issue `ioctl` to increase entropy count!
 + [Character Generation protocol](http://en.wikipedia.org/wiki/Character_Generator_Protocol)
 as described in [RFC864](http://tools.ietf.org/html/rfc864) to provide you with
@@ -171,9 +176,11 @@ We support the following parameters to be sent in the URL.
         count: The number of random bytes to acquire. The limitation depends
             on the quota of your subscription plan. For free users, it's
             limited to 4096.
-        io: either 'binary' or 'text'. Default is 'text', which converts
+        io: either 'binary', 'ascii' or 'text'. Default is 'text', which converts
             random data to its corresponding hexidecimal representation
-            for human-readability.
+            for human-readability. 'binary' serves raw binary streams and
+            'ascii' the same raw-binary stream but pretending to be HTML
+            by manipulating its `Content-Type` header.
 
 For example, to get 1234 bytes of random data as binary stream from
 `/dev/random`, and force server to return a status code of `503 Service Unavailable`
@@ -215,7 +222,7 @@ For example, to check the entropy level, use:
 
 To increase the entropy level by 30, use:
 
-        $ curl http://dev-random-as-a-service.appspot.com/ioctl/4/RNDADDTOENTCNT/20/
+        $ curl http://dev-random-as-a-service.appspot.com/ioctl/4/RNDADDTOENTCNT/30/
 
 (We have a fancy nuclear based randomness generator that refills the entropy pool
 every some interval.)
@@ -242,11 +249,12 @@ For ease of illustration we use [requests](http://docs.python-requests.org/en/la
         else:
             print req.text
 
-### (Experimental) `/dev/zero` & `/dev/null`
+### (Experimental) `/dev/full`, `/dev/zero` & `/dev/null`
 
 This API is *experimental* and in early stage.
 
-`/dev/zero` & [`/dev/null`](http://devnull-as-a-service.com) API is the same
+`/dev/full`, `/dev/zero` & [`/dev/null`](http://devnull-as-a-service.com)
+API is the same
 as that of `/dev/random` and `/dev/urandom`, both GET and POST supported.
 
       curl "http://dev-random-as-a-service.appspot.com/dev/null"
@@ -255,6 +263,8 @@ as that of `/dev/random` and `/dev/urandom`, both GET and POST supported.
       a63c90cc3684ad8b0a2176a6a8fe9005  -
       <MD5 of 10-bytes, all of which are 0x0>
 
+Posting to `/dev/full` always yields `413 Entity too large` and reading is
+equivalent to from `/dev/zero`.
 
 ### Implementations & Hosting Your Own
 
